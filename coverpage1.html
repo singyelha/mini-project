@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Room Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('your-background-image.jpg'); /* Update this path with your outer background image */
+            background-size: cover; /* This makes the outer background image cover the entire screen */
+            background-repeat: no-repeat; /* Ensures the outer background image doesn't repeat */
+            background-position: center; /* Centers the outer background image */
+        }
+
+        .screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('images/Picture1.png'); /* Add this line for inner background image */
+            background-size: cover; /* Makes the inner background image cover the box */
+            background-repeat: no-repeat; /* Ensures the inner background image doesn't repeat */
+            background-position: center; /* Centers the inner background image */
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .logo {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #000; /* Add color for text to be visible over background */
+        }
+
+        .sub-title {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #000; /* Add color for text to be visible over background */
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .google-btn {
+            background-color: #4285f4;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div class="screen" id="welcome-screen">
+        <div class="logo">HOSTEL ROOM BOOKING</div>
+        <div class="sub-title">Seamless Stay</div>
+        <button class="btn" onclick="showScreen('login-screen')">Get Started</button>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="screen hidden" id="login-screen">
+        <div class="logo">HOSTEL ROOM BOOKING</div>
+        <input type="text" placeholder="Username" class="input-field">
+        <input type="password" placeholder="Password" class="input-field">
+        <button class="btn">Log In</button>
+        <div class="google-login">
+            <button class="btn google-btn">Login Using Google</button>
+        </div>
+    </div>
+
+    <!-- Selection Screen -->
+    <div class="screen hidden" id="selection-screen">
+        <button class="btn">Boarding</button>
+        <button class="btn">Self Catering</button>
+    </div>
+
+    <script>
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.add('hidden');
+            });
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
