@@ -1,8 +1,9 @@
 body {
     font-family: 'Times New Roman', Times, serif;
+    background-image: url(/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.21_8036add8.jpg);
 }
 .form-container {
-    background-color: rgb(46, 146, 185);
+    background-color: rgb(179, 220, 236);
     padding: 20px;
     width: 300px;
     margin: auto;
@@ -19,14 +20,26 @@ input, select {
     width: 100%;
     padding: 5px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 .button-container {
     text-align: right; /* Aligns the button to the right */
+    display: flex;
+    justify-content: space-between;
 }
-button {
+.back-button, .next-button {
     background-color: green;
     color: white;
     padding: 10px 20px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    width: 45%;   
+}
+.back-button:hover, .next-button:hover {
+    background-color: darkgreen;
+}
+h2 {
+    text-align: center;
 }

@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 7px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background: url('/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.21_8036add8.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    background-color: rgb(177, 217, 233);
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;   
+}
+
+header {
+    padding: 15px;
+    background-color: #f0f0f0;
+}
+
+.app-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.content {
+    padding: 20px;
+    
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.block {
+    margin-bottom: 20px;
+}
+
+.block-link {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+    border: 1px solid black;
+    background-color: rgb(85, 209, 161);
+    border-radius: 10px
+    
+}
+
+.block span {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;  
+}
+.back-button, .next-button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 45%;   
+}
+.back-button:hover, .next-button:hover {
+    background-color: darkgreen;
+}
+
+
