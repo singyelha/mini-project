@@ -1,32 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            background-image: url('/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.21_8036add8.jpg'); /* Update this path with your outer background image */
+            background-size: cover; /* This makes the outer background image cover the entire screen */
+            background-repeat: no-repeat; /* Ensures the outer background image doesn't repeat */
+            background-position: center; /* Centers the outer background image */
+
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: gray;
+        }
+
+        .floor-container {
+            margin: 20px 0;
+        }
+
+        .floor {
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .room-row {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+
+        .room {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-size: 14px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .room.available {
+            background-color: black; /* Green */
+            color: white;
+        }
+
+        .room.booked {
+            background-color: red; /* Red */
+            color: white;
+            pointer-events: none; /* Disable clicking for booked rooms */
+        }
+
+        .room.selected {
+            background-color: #1e90ff; /* Blue for selected */
+            color: white;
+        }
+
+        .seat {
+            width: 20px;
+            height: 20px;
+            margin: 2px;
+            border-radius: 5px;
+            background-color: green; /* Green for available seat */
+            cursor: pointer;
+        }
+
+        .seat.booked {
+            background-color: red; /* Red for booked seat */
+            pointer-events: none; /* Disable clicking for booked seats */
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .back-button, .proceed-button {
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-button:hover, .proceed-button:hover {
+            background-color: #4682b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Jampel Khangzang</h1>
+            <h2>Select the Room</h2>
+        </header>
+
+        <div class="floor-container">
+            <div class="floor" id="first-floor">
+                <h3>First Floor</h3>
+                <div class="room-row">
+                    <div class="room available" data-room="2-1">
+                        2-1
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                    <div class="room available" data-room="2-2">
+                        2-2
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                    <div class="room available" data-room="2-3">
+                        2-3
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                    <div class="room available" data-room="2-4">
+                        2-4
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-row">
+                    <div class="room available" data-room="2-5">
+                        2-5
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                    <div class="room available" data-room="2-6">
+                        2-6
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="floor" id="ground-floor">
+                <h3>Ground Floor</h3>
+                <div class="room-row">
+                    <div class="room available" data-room="1-1">
+                        1-1
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                    <div class="room available" data-room="1-2">
+                        1-2
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                    <div class="room available" data-room="1-3">
+                        1-3
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                    <div class="room available" data-room="1-4">
+                        1-4
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-row">
+                    <div class="room available" data-room="1-5">
+                        1-5
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                    <div class="room available" data-room="1-6">
+                        1-6
+                        <div class="seats">
+                            <div class="seat" data-seat-id="1"></div>
+                            <div class="seat" data-seat-id="2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <button class="back-button">Back</button>
+            <button class="proceed-button" id="proceedBtn" disabled>Proceed</button>
+        </div>
+    </div>
+
+    <script>
+        let selectedRoom = null;
+
+        // Get all available rooms
+        const availableRooms = document.querySelectorAll('.room.available');
+
+        // Add click event to each available room
+        availableRooms.forEach(room => {
+            room.addEventListener('click', function() {
+                // Deselect the previous selection
+                if (selectedRoom) {
+                    selectedRoom.classList.remove('selected');
+                }
+
+                // Select the clicked room
+                selectedRoom = this;
+                selectedRoom.classList.add('selected');
+
+                // Enable the proceed button
+                document.getElementById('proceedBtn').disabled = true; // Disable directly
+            });
+
+            const seats = room.querySelectorAll('.seat');
+            seats.forEach(seat => {
+                seat.addEventListener('click', function(e) {
+                    const seatId = this.dataset.seatId;
+                    const alreadyBooked = Array.from(seats).some(s => s.classList.contains('booked'));
+                    
+                    // If room is selected but no seats are available
+                    if (alreadyBooked) {
+                        alert('This room has already been booked.');
+                        return;
+                    }
+                    
+                    // Book this seat
+                    this.classList.add('booked');
+                    
+                    // If both seats are booked, change room to booked status
+                    if (Array.from(seats).every(s => s.classList.contains('booked'))) {
+                        room.classList.remove('available');
+                        room.classList.add('booked');
+                    }
+
+                    // After booking, the proceed button can be enabled
+                    const bookedSeats = Array.from(seats).filter(s => s.classList.contains('booked')).length;
+                    if (bookedSeats > 0) {
+                        document.getElementById('proceedBtn').disabled = false; // Enable on booking
+                    }
+
+                    e.stopPropagation(); // Prevent room click event from triggering
+                });
+            });
+        });
+
+        document.querySelector('.back-button').addEventListener('click', function() {
+            alert('Going back to previous step.');
+        });
+
+        document.querySelector('.proceed-button').addEventListener('click', function() {
+            if (selectedRoom) {
+                const bookedSeats = Array.from(selectedRoom.querySelectorAll('.seat')).filter(s => s.classList.contains('booked')).length;
+                alert(`You have booked room: ${selectedRoom.dataset.room} with ${bookedSeats} seat(s)`);
+                // Any additional logic for booking can be implemented here
             }
-           
-            body {
-                font-family: 'Times New Roman', Times, serif;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                background-color: #f2f2f2;
-                background-image: url('/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.21_8036add8.jpg'); /* Update this path with your outer background image */
-                background-size: cover; /* This makes the outer background image cover the entire screen */
-                background-repeat: no-repeat; /* Ensures the outer background image doesn't repeat */
-                background-position: center; /* Centers the outer background image */
-            }
-            </style>
-    </head>
-    <body>
-        <h2>Select the Room</h2>
-        
-    </body>
+        });
+    </script>
+</body>
 </html>

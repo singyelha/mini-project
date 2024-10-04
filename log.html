@@ -18,12 +18,11 @@
             align-items: center;
             height: 100vh;
             background-color: #f2f2f2;
-            background-image: url('/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.21_8036add8.jpg'); /* Update this path with your outer background image */
-            background-size: cover; /* This makes the outer background image cover the entire screen */
-            background-repeat: no-repeat; /* Ensures the outer background image doesn't repeat */
-            background-position: center; /* Centers the outer background image */
+            background-image: url('/picture/WhatsApp Image 2024-09-01 at 15.28.21_8036add8.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
         }
-        
 
         .login-container {
             background: url('background.png') no-repeat center center;
@@ -32,22 +31,25 @@
             width: 350px;
             text-align: center;
             border-radius: 15px;
-
+           
         }
 
         .logo-left, .logo-right {
             position: absolute;
             top: 20px;
         }
+
         .logo-left {
             left: 20px;
         }
+
         .logo-right {
             right: 20px;
         }
+
         .logo-left img, .logo-right img {
-            width: 90px; /* Adjust size as needed */
-            border-radius: 20px; /* Adding border-radius to logos */
+            width: 90px;
+            border-radius: 20px;
         }
 
         h2 {
@@ -89,7 +91,7 @@
 
         .oauth-login p {
             font-size: 14px;
-            color:black;
+            color: black;
             margin-top: 20px;
         }
 
@@ -106,9 +108,7 @@
         }
 
         button.google-login img {
-            width: 200px;
-            margin-right: 20%;
-
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -135,10 +135,14 @@
 
             <div class="oauth-login">
                 <p>LOGIN USING YOUR ACCOUNT ON:</p>
-                <button class="google-login">
-                    <img src="/picture/thumb_u.min.jpg" alt="Google" width="1000px" height="20px">
-                </button>
+                <div class="g_id_signin" data-client_id="YOUR_CLIENT_ID.apps.googleusercontent.com" data-callback="onSignIn" data-auto_prompt="false">
+                    <button class="google-login">
+                        <img src="/picture/thumb_u.min.jpg" alt="Google" width="20px">
+                        Login with Official Gmail Account
+                    </button>
+                </div>
             </div>
+            
         </div>
     </div>
 </body>
