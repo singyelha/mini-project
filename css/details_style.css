@@ -3,11 +3,12 @@ body {
     background-image: url(/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.21_8036add8.jpg);
 }
 .form-container {
-    background-color: rgb(179, 220, 236);
-    padding: 20px;
-    width: 300px;
+    background-color: rgb(243, 182, 13);
+    padding: 70px;
+    width: 400px;
     margin: auto;
     position: relative;
+    border-radius: 20px;
 }
 .form-group {
     margin-bottom: 10px;
@@ -42,4 +43,6 @@ input, select {
 }
 h2 {
     text-align: center;
+    font-size: 28px;
+    
 }
