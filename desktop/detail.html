@@ -4,22 +4,100 @@
     <link rel="stylesheet" href="/css/details_style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <title>Add Your Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8; /* Light background for form */
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            width: 400px;
+            text-align: left;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .back-button, .next-button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button {
+            background-color: #f44336; /* Red color */
+            color: white;
+        }
+
+        .next-button {
+            background-color: #4CAF50; /* Green color */
+            color: white;
+        }
+
+        .back-button:hover {
+            background-color: #d32f2f;
+        }
+
+        .next-button:hover {
+            background-color: #388e3c;
+        }
+    </style>
 </head>
 <body>
     <div class="form-container">
         <h2>Add your Details</h2>
         <div class="form-group">
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName">
+            <input type="text" id="firstName" name="firstName" required>
         </div>
         <div class="form-group">
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName">
+            <input type="text" id="lastName" name="lastName" required>
         </div>
         <div class="form-group">
             <label for="gender">Gender:</label>
-            <select id="gender" name="gender">
+            <select id="gender" name="gender" required>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
@@ -27,7 +105,7 @@
         </div>
         <div class="form-group">
             <label for="department">Department:</label>
-            <select id="department" name="department">
+            <select id="department" name="department" required>
                 <option value="dcsn">DCSN</option>
                 <option value="dc">DC</option>
                 <option value="ds">DS</option>
@@ -43,16 +121,16 @@
         </div>
         <div class="form-group">
             <label for="year">Year:</label>
-            <select id="year" name="year">
+            <select id="year" name="year" required>
                 <option value="first">First Year</option>
                 <option value="second">Second Year</option>
-                <option value="tyear">Third Year</option>
-                <option value="fyear">Forth Year</option>
+                <option value="third">Third Year</option>
+                <option value="fourth">Fourth Year</option>
             </select>
         </div>
         <div class="button-container">
-            <button type="button" class="back-button">Back</button>
-            <button type="submit" class="next-button">Next</button>
+            <button type="button" class="back-button" onclick="window.history.back()">Back</button>
+            <button type="button" class="next-button" onclick="window.location='block.html'">Next</button>
         </div>
     </div>
 </body>
