@@ -3,231 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel Room Booking</title>
+    <title>Select the Block</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Times New Roman', Times, serif;
-            display: flex;
-            flex-direction: column; /* Stack elements vertically */
-            justify-content: center;
-            align-items: center;
-            height: auto; /* Allow body height to adjust by content */
             background-image: url('/picture/WhatsApp Image 2024-09-01 at 15.28.21_8036add8.jpg');
             background-size: cover;
-            background-repeat: no-repeat;
             background-position: center;
-        }
-
-        .screen {
+            background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 40px;
-            border-radius: 15px;
-            width: 400px;
-            max-width: 90%; /* Make it responsive */
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbar when sidebar is offscreen */
         }
-
-        h1 {
-            margin: 30px 0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 20px 30px;
-            font-size: 18px;
-            color: white;
-            background-color: #00aaff;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-        }
-
-        .btn:hover {
-            background-color: #0088cc;
-        }
-
-        .login-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 60px;
-            border-radius: 25px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 350px;
-            text-align: center;
-            display: none; /* Initially hide the login container */
-        }
-
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .lost-password {
-            margin-top: 10px;
-        }
-
-        .google-btn {
-            background-color: white;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 3px;
-            display: flex;
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.85);
+            width: 100%; 
+            padding: 10px 20px; 
+            display: flex; 
+            justify-content: flex-end; /* Align to the right */
             align-items: center;
-            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: absolute; /* Make navbar absolute positioning */
+            top: 0; /* Align to the top */
+            right: 0; /* Align to the right */
+        }
+        .hamburger {
             cursor: pointer;
-            color: black;
-            margin-top: 20px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            width: 30px; 
+            height: 30px;
         }
-
-        .google-icon {
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
+        .bar {
+            width: 100%; 
+            height: 4px; 
+            background-color: #333; 
+            margin: 2px 0; 
+            transition: 0.3s;
         }
-        
-        .hostel-options {
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            padding: 70px;
-            width: 650px;
-            display: none; /* Initially hide this section */
+        .sidebar {
+            background-color: rgba(255, 255, 255, 0.9); 
+            width: 200px; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            position: absolute; 
+            top: 60px; 
+            left: -220px; /* Hidden offscreen */
+            transition: left 0.3s;
+            display: none; /* Start as hidden */
         }
-
-        h2 {
-            color: #333;
+        .sidebar.active {
+            left: 0; /* Show sidebar on activation */
+            display: block; /* Ensure it's displayed */
+        }
+        .sidebar h2 {
+            font-size: 24px; 
+            text-align: center; 
             margin-bottom: 20px;
         }
-
-        .button {
+        .sidebar a {
             display: block;
-            background-color: #00BFFF; /* Light blue color */
+            padding: 10px;
+            text-decoration: none;
+            color: #333; 
+            font-size: 18px;
+            text-align: center; 
+            margin: 5px 0; 
+            border-radius: 5px; 
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #4a90e2; 
             color: white;
-            padding: 15px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none; /* Remove underline */
-            transition: background-color 0.3s;
         }
-
-        .button:hover {
-            background-color: #007BFF; /* Darker blue on hover */
+        .container {
+            margin-top: 20px; 
+            background-color: rgba(255, 255, 255, 0.9); 
+            border-radius: 20px; 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 500px; 
+            padding: 40px; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
         }
-
-        .recommendation {
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
+        .header {
+            background-color: #4a90e2; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+            font-size: 28px; 
+            border-radius: 10px; 
+            width: 100%;
+            margin-bottom: 20px; 
         }
-
-        /* Positioning logos outside the content */
-        .logo-left, .logo-right {
-            position: absolute;
-            top: 20px;
+        .content {
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;    
         }
-        .logo-left {
-            left: 20px;
+        .block-option {
+            background-color: #e9f0f8; 
+            border: 2px solid #b8d4f5; 
+            border-radius: 10px; 
+            padding: 30px; 
+            margin: 10px 0; 
+            cursor: pointer; 
+            transition: background-color 0.3s; 
+            text-align: center; 
+            font-size: 24px; 
+            width: 80%; 
         }
-        .logo-right {
-            right: 20px;
-        }
-        .logo-left img, .logo-right img {
-            width: 90px; /* Adjust size as needed */
-            border-radius: 20px; /* Adding border-radius to logos */
+        .block-option:hover {
+            background-color: #d0e3f7; 
         }
     </style>
 </head>
 <body>
-
-    <!-- Logo 1 (left) and Logo 2 (right) placed outside the content area -->
-    <div class="logo-left">
-        <img src="/picture/Royal_University_of_Bhutan_logo.svg.png" alt="Logo 1">
-    </div>
-
-    <div class="logo-right">
-        <img src="/picture/JNEC-Logo-100x100-1.png" alt="Logo 2">
-    </div>
-
-    <div class="screen">
-        <img src="/picture/WhatsApp Image 2024-09-01 at 15.28.20_796a3f2e.jpg" alt="logo" width="100%" height="200px">
-        <h1>WELCOME</h1>
-        <a href="#" class="btn" id="getStartedBtn">Get Started</a>
-    </div>
-
-    <div class="login-container" id="loginContainer">
-        <h1>Log in to Hostel Room Booking</h1>
-        <form>
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit" class="btn" id="loginBtn">Login</button>
-        </form>
-        <div class="lost-password">
-            <a href="#">Lost password?</a>
-        </div>
-        <div class="google-login">
-            <p>Log in using your account on:</p>
-            <button class="google-btn">
-                <img src="https://www.google.com/favicon.ico" alt="Google" class="google-icon">
-                <span>Login with Official Gmail Account</span>
-            </button>
+    <div class="navbar">
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
     </div>
 
-    <div class="hostel-options" id="hostelOptions">
-        <h2>Hostel Room Booking</h2>
-        <a href="/desktop/detail.html" class="button">Boarding</a>
-        <p class="recommendation">Recommended for first year students...</p>
-        <a href="/desktop/detail.html" class="button">Self Catering</a>
+    <div class="sidebar" id="sidebar">
+        <h2>Menu</h2>
+        <a href="#" onclick="showDetail('home')">Home</a>
+        <a href="#" onclick="showDetail('profile')">Profile</a>
+        <a href="#" onclick="showDetail('contact')">Contact</a>
+        <a href="#" onclick="showDetail('change-password')">Change Password</a>
+        <a href="#" onclick="showDetail('logout')">Logout</a> <!-- Added Logout option -->
+    </div>
+    
+    <div class="container">
+        <div class="header">Select the Block</div>
+        <div class="content" id="content-area">
+            <div class="block-option">Jampel Khangzang</div>
+            <div class="block-option">Namgay Khangzang</div>
+            <div class="block-option">Zhilneoy Khangzang</div>
+            <div class="block-option">Deoukhur Khangzang</div>
+        </div>
     </div>
 
     <script>
-        const getStartedBtn = document.getElementById('getStartedBtn');
-        const loginContainer = document.getElementById('loginContainer');
-        const hostelOptions = document.getElementById('hostelOptions');
-        const loginBtn = document.getElementById('loginBtn');
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
 
-        getStartedBtn.addEventListener('click', function() {
-            // Hide the welcome screen and show the login container
-            document.querySelector('.screen').style.display = 'none';
-            loginContainer.style.display = 'block';
+        // Show sidebar when the hamburger menu is clicked
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
         });
 
-        loginBtn.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent form submission for demo purposes
-            // Assume successful login
-            // Hide login container and show hostel options
-            loginContainer.style.display = 'none';
-            hostelOptions.style.display = 'block';
-        });
+        // Function to display details based on selected menu item
+        function showDetail(item) {
+            const contentArea = document.getElementById('content-area');
+            switch (item) {
+                case 'home':
+                    contentArea.innerHTML = '<h2>Home Details</h2><p>Welcome to the Home page!</p>';
+                    break;
+                case 'profile':
+                    contentArea.innerHTML = '<h2>Profile Details</h2><p>This is your Profile page!</p>';
+                    break;
+                case 'contact':
+                    contentArea.innerHTML = '<h2>Contact Details</h2><p>Here are your Contact details!</p>';
+                    break;
+                case 'change-password':
+                    contentArea.innerHTML = '<h2>Change Password</h2><p>Here you can change your password.</p>';
+                    break;
+                case 'logout':
+                    contentArea.innerHTML = '<h2>Logout</h2><p>You have been logged out. Redirecting to login page...</p>';
+                    setTimeout(() => {
+                        // Simulate redirect after logout
+                        window.location.href = 'login.html'; // Change to your login page
+                    }, 2000);
+                    break;
+                default:
+                    contentArea.innerHTML = '<h2>Select the Block</h2>';
+            }
+        }
     </script>
-
 </body>
 </html>

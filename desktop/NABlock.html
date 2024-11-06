@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column; /* Allow for column layout */
+            height: 100vh; /* Full height of the viewport */
+        }
+
+        .container {
+            flex: 1; /* Take remaining space */
+            display: flex;
+            flex-direction: column; /* Column layout */
+            padding: 20px;          
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Prevent overflow of container */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px; /* Added bottom margin for spacing */
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: gray;
+            margin-bottom: 20px; /* Added margin to separate from floor container */
+        }
+
+        .floor-container {
+            flex: 1; /* Allow it to take remaining space */
+            overflow-y: auto; /* Enable vertical scrolling */
+            margin: 20px 0; /* Add margin */
+        }
+
+        .floor {
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .room-row {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+
+        .room {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-size: 14px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .room.available {
+            background-color: black;
+            color: white;
+        }
+
+        .room.booked {
+            background-color: red;
+            color: white;
+            pointer-events: none; 
+        }
+
+        .room.selected {
+            background-color: #1e90ff; 
+            color: white;
+        }
+
+        .seat {
+            width: 20px;
+            height: 20px;
+            margin: 2px;
+            border-radius: 5px;
+            background-color: green; 
+            cursor: pointer;
+        }
+
+        .seat.booked {
+            background-color: red; 
+            pointer-events: none; 
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .back-button, .proceed-button {
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-button:hover, .proceed-button:hover {
+            background-color: #4682b4;
+        }
+
+        /* Score/feedback message style */
+        .score-message {
+            text-align: center;
+            font-size: 18px;
+            color: green;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Room Booking System</h1>
+            <h2>Select the Room</h2>
+        </header>
+
+        <div class="floor-container">
+            <!-- JavaScript will populate floors and rooms here -->
+        </div>
+
+        <div class="score-message" id="scoreMessage"></div> <!-- For feedback messages -->
+
+        <div class="footer">
+            <button class="back-button">Back</button>
+            <button class="proceed-button" id="proceedBtn" disabled>Proceed</button>
+        </div>
+    </div>
+
+    <script>
+        let selectedRoom = null;
+
+        function createFloorsAndRooms() {
+            const floorContainer = document.querySelector('.floor-container');
+            const floors = 4;
+            const roomsPerFloor = 10;
+            
+            for (let floor = 1; floor <= floors; floor++) {
+                const floorDiv = document.createElement('div');
+                floorDiv.classList.add('floor');
+                floorDiv.innerHTML = `<h3>Floor ${floor}</h3>`;
+                
+                for (let row = 0; row < 2; row++) {
+                    const roomRowDiv = document.createElement('div');
+                    roomRowDiv.classList.add('room-row');
+                    
+                    for (let room = 1 + row * 5; room <= 5 + row * 5; room++) {
+                        const roomDiv = document.createElement('div');
+                        roomDiv.classList.add('room', 'available');
+                        roomDiv.dataset.room = `${floor}-${room}`;
+                        roomDiv.innerHTML = `${floor}-${room}
+                            <div class="seats">
+                                <div class="seat" data-seat-id="1"></div>
+                                <div class="seat" data-seat-id="2"></div>
+                            </div>`;
+                        
+                        roomDiv.addEventListener('click', function() {
+                            if (selectedRoom) {
+                                selectedRoom.classList.remove('selected');
+                            }
+                            selectedRoom = this;
+                            selectedRoom.classList.add('selected');
+                            document.getElementById('proceedBtn').disabled = true;
+                        });
+
+                        const seats = roomDiv.querySelectorAll('.seat');
+                        seats.forEach(seat => {
+                            seat.addEventListener('click', function(e) {
+                                if (Array.from(seats).some(s => s.classList.contains('booked'))) {
+                                    alert('This room has already been booked.');
+                                    return;
+                                }
+                                this.classList.add('booked');
+                                if (Array.from(seats).every(s => s.classList.contains('booked'))) {
+                                    roomDiv.classList.remove('available');
+                                    roomDiv.classList.add('booked');
+                                }
+                                if (Array.from(seats).some(s => s.classList.contains('booked'))) {
+                                    document.getElementById('proceedBtn').disabled = false;
+                                }
+                                e.stopPropagation();
+                            });
+                        });
+                        roomRowDiv.appendChild(roomDiv);
+                    }
+                    floorDiv.appendChild(roomRowDiv);
+                }
+                floorContainer.appendChild(floorDiv);
+            }
+        }
+
+        createFloorsAndRooms();
+
+        document.querySelector('.back-button').addEventListener('click', function() {
+            alert('Going back to previous step.');
+        });
+
+        document.querySelector('.proceed-button').addEventListener('click', function() {
+            const scoreMessage = document.getElementById('scoreMessage');
+            if (selectedRoom) {
+                const bookedSeats = Array.from(selectedRoom.querySelectorAll('.seat')).filter(s => s.classList.contains('booked')).length;
+                scoreMessage.innerText = `You have booked room: ${selectedRoom.dataset.room} with ${bookedSeats} seat(s)`;
+            }
+        });
+    </script>
+</body>
+</html>
