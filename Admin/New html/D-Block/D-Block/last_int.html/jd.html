@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <link rel="stylesheet" href="/desktop/css/background.css">
+    <link rel="stylesheet" href="/desktop/css/background.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .back-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Student Information</h2>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search">
+            <button onclick="searchStudents()">Search</button>
+        </div>
+
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th>Std ID</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Room No</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody">
+            </tbody>
+        </table>
+
+        <button class="back-button">BACK</button>
+    </div>
+
+    <script>
+        // Sample student data (replace with your actual data)
+        const students = [
+            { id: 234, name: "Tshering", course: "CSN", room: "1-1" },
+            { id: 654, name: "Dawa", course: "CSN", room: "1-2" },
+            // ... more students
+        ];
+
+        // Function to populate the table with student data
+        function populateTable() {
+            const tableBody = document.getElementById("studentTableBody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            students.forEach(student => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.course}</td>
+                    <td>${student.room}</td>
+                    <td><button onclick="editStudent(${student.id})">Edit</button> <button onclick="deleteStudent(${student.id})">Delete</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to search students by name
+        function searchStudents() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const filteredStudents = students.filter(student => student.name.toLowerCase().includes(searchInput));
+            populateTable(filteredStudents);
+        }
+
+        // Function to edit a student (placeholder for now)
+        function editStudent(studentId) {
+            // Implement your edit logic here, e.g., show a modal or redirect to an edit page
+            alert("Editing student with ID: " + studentId);
+        }
+
+        // Function to delete a student with confirmation
+        function deleteStudent(studentId) {
+            if (confirm("Are you sure you want to delete this student?")) {
+                const index = students.findIndex(student => student.id === studentId);
+                if (index !== -1) {
+                    students.splice(index, 1);
+                    populateTable();
+                }
+            }
+        }
+
+        // Initial table population
+        populateTable();
+    </script>
+</body>
+</html>

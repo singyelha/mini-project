@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/desktop/css/profile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <button class="close-btn" onclick="closeProfile()">✖ Close</button>
+        <div class="profile-header">
+            <div class="profile-pic">
+                <span class="initials">P</span> <!-- "P" indicates that no user is present -->
+            </div>
+            <h1 class="user-name">Profile Not Available</h1>
+            <p class="user-username">@username</p>
+            <p class="user-email">email@example.com</p>
+        </div>
+        <div class="profile-info">
+            <h2>About Me</h2>
+            <p>No information available.</p>
+        </div>
+        <div class="profile-details">
+            <h2>Profile Details</h2>
+            <ul>
+                <li><strong>Course:</strong> Not Specified</li>
+                <li><strong>Year of Study:</strong> Not Specified</li>
+                <li><strong>Location:</strong> Not Specified</li>
+                <li><strong>Time Zone:</strong> Not Specified</li>
+            </ul>
+        </div>
+        <div class="profile-actions">
+            <button class="edit-profile-btn" disabled>Edit Profile</button>
+        </div>
+    </div>
+
+    <script>
+        function closeProfile() {
+            document.querySelector('.profile-container').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

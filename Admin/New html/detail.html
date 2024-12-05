@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/desktop/css/detail.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <button class="openbtn" onclick="openSidebar()">☰ Menu</button>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+        <a href="#">Profile</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Log Out</a>
+        <a href="#">Notification</a>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <h2>Add your Details</h2>
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <select id="department" name="department" required>
+                <option value="dcsn">DCSN</option>
+                <option value="dc">DC</option>
+                <option value="ds">DS</option>
+                <option value="dm">DM</option>
+                <option value="de">DE</option>
+                <option value="dece">DECE</option>
+                <option value="dmpm">DMPM</option>
+                <option value="bep">BEPE</option>
+                <option value="bem">BEME</option>
+                <option value="bes">BESG</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <select id="year" name="year" required>
+                <option value="first">First Year</option>
+                <option value="second">Second Year</option>
+                <option value="third">Third Year</option>
+                <option value="fourth">Fourth Year</option>
+            </select>
+        </div>
+        <div class="button-container">
+            <button type="button" class="back-button" onclick="window.history.back()">Back</button>
+            <button type="button" class="next-button" onclick="handleNext()">Next</button>
+        </div>
+    </div>
+    <script src="/desktop/js/gender.js"></script>
+    <script src="/desktop/js/detail.js"></script>
+</body>
+</html>

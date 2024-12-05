@@ -1,0 +1,130 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+.openbtn {
+    display: inline;
+    position:fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    z-index: 1000; /* Ensure button is above everything */
+}
+.openbtn:hover {
+    background-color: #444;
+}
+.sidebar {
+    height: 100%; /* Full-height */
+    width: 0; /* Initially hidden */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #333; /* Sidebar background */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* Smooth transition */
+    padding-top: 60px; /* Spacing at the top */
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-image: url('/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.21_8036add8.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #e41010;
+    border-radius: 50%;
+}
+.title {
+    text-align: center;
+    color: black;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.room-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.room-info {
+    flex-grow: 1;
+}
+.room-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.room-status {
+    font-size: 14px;
+}
+.status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.status-dot.total { background-color: black; }
+.status-dot.booked { background-color: red; }
+.status-dot.available { background-color: green; }
+.visit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.visit-btn:hover {
+    background-color:darkgreen;
+}
+.back-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+}
+.back-btn:hover {
+    background-color:darkgreen;
+}

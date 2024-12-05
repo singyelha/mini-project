@@ -112,6 +112,7 @@ button {
     margin-top: 20px;
 }
 .login {
+    display: inline-block;
     width: 70px;
     padding: 10px;
     background-color: #0066cc;
@@ -122,6 +123,7 @@ button {
     margin-top: 10px;
 }
 .sign {
+    
     width: 700px;
     padding: 10px;
     background-color: #0066cc;
