@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Room Booking Records</title>
+    <link rel="stylesheet" href="/desktop/css/D.css">
+    <link rel="stylesheet" href="/desktop/css/background.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            color: #343a40;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #007BFF;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Room Booking Records</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Year</th>
+                    <th>Booked Room</th>
+                </tr>
+            </thead>
+            <tbody id="recordTableBody">
+                <!-- Records will be populated here by JavaScript -->
+            </tbody>
+        </table>
+        
+        <a href="/desktop/New html/D.html">
+            <button class="back-button">Back to Room Selection</button>
+        </a>
+    </div>
+    
+    <script>
+        // Example data array to simulate previously stored records.
+        const bookings = [
+            {
+                firstName: "John",
+                lastName: "Doe",
+                gender: "Male",
+                department: "Computer Science",
+                year: "2023",
+                bookedRoom: "2-5"
+            },
+            {
+                firstName: "Jane",
+                lastName: "Smith",
+                gender: "Female",
+                department: "Engineering",
+                year: "2023",
+                bookedRoom: "3-8"
+            },
+            {
+                firstName: "Alice",
+                lastName: "Johnson",
+                gender: "Female",
+                department: "Mathematics",
+                year: "2022",
+                bookedRoom: "1-1"
+            }
+            // Add more records as needed
+        ];
+
+        // Function to populate the booking records table
+        function populateRecords() {
+            const tableBody = document.getElementById('recordTableBody');
+            bookings.forEach(booking => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${booking.firstName}</td>
+                    <td>${booking.lastName}</td>
+                    <td>${booking.gender}</td>
+                    <td>${booking.department}</td>
+                    <td>${booking.year}</td>
+                    <td>${booking.bookedRoom}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Call the populateRecords function when the page loads
+        window.onload = populateRecords;
+    </script>
+</body>
+</html>

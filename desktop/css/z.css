@@ -127,3 +127,15 @@ h1, h2 {
     background-color: #4682b4;
     color: white;
 }
+.room {
+    cursor: pointer; /* Change cursor to pointer for better UX */
+}
+
+.booked {
+    background-color: red; /* Color change for booked room */
+}
+
+.disabled {
+    pointer-events: none; /* Disable clicking after proceeding */
+    opacity: 0.5; /* Slightly fade out the rooms */
+}

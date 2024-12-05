@@ -6,6 +6,61 @@
     <title>Partitioned Room Layout</title>
     <link rel="stylesheet" href="/desktop/css/D.css">
     <link rel="stylesheet" href="/desktop/css/background.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .floor {
+            margin-bottom: 20px;
+        }
+        .partition {
+            display: flex;
+            justify-content: space-between;
+        }
+        .section {
+            flex: 1;
+            margin: 0 10px;
+        }
+        .room {
+            cursor: pointer;
+            padding: 15px;
+            border: 1px solid #007BFF;
+            display: inline-block;
+            margin: 5px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .room.booked {
+            background-color: red;
+            color: white;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+        }
+        #userDetails {
+            display: none;
+            margin-top: 20px;
+        }
+        #userInfo {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
     <h2>Select Room</h2>
@@ -73,8 +128,18 @@
             <a href="/desktop/New html/Dblock.html">
                 <button class="button back-button">Back</button>
             </a>
-            <button class="button proceed-button" onclick="proceedBooking()">Proceed</button>
+            <a href="/desktop/New html/try2.html">
+                <button class="button proceed-button" onclick="proceedBooking()">Proceed</button>
+            </a>
+            
         </div>
-        <script src="/desktop/js/booking.js"></script>
+
+        <!-- User Details Section -->
+        <div id="userDetails">
+            <h3>User Booking Details:</h3>
+            <div id="userInfo"></div>
+        </div>
+    </div>
+    <script src="/desktop/js/booking.js"></script>
 </body>
 </html>
