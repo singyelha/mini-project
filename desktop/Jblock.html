@@ -1,21 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/font awesome/fontawesome.css">
-    <link rel="stylesheet" href="/font awesome/all.css">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select the Room</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/font awesome/fontawesome.css">
+    <link rel="stylesheet" href="/font awesome/all.css">
     <style>
+        /* General Styles */
         body {
             font-family: 'Times New Roman', Times, serif;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
         }
+
+        /* Sidebar Styles */
+        .openbtn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            z-index: 1000;
+        }
+
+        .openbtn:hover {
+            background-color: #444;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            margin-left: 50px;
+        }
+
+        /* Container and Room Selection Styles */
         .container {
+            margin-left: 0;
+            transition: margin-left 0.5s;
             max-width: 800px;
             margin: 0 auto;
             padding: 40px;
@@ -24,26 +80,22 @@
             background-position: center;
             min-height: 100vh;
             box-sizing: border-box;
-    
         }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 50px;
         }
-        .profile-icon {
-            width: 30px;
-            height: 30px;
-            background-color: #e41010;
-            border-radius: 50%;
-        }
+
         .title {
             text-align: center;
             color: black;
             font-size: 28px;
             margin-bottom: 20px;
         }
+
         .room-card {
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
@@ -53,16 +105,20 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .room-info {
             flex-grow: 1;
         }
+
         .room-name {
             font-weight: bold;
             margin-bottom: 5px;
         }
+
         .room-status {
             font-size: 14px;
         }
+
         .status-dot {
             display: inline-block;
             width: 10px;
@@ -70,9 +126,11 @@
             border-radius: 50%;
             margin-right: 5px;
         }
+
         .status-dot.total { background-color: black; }
         .status-dot.booked { background-color: red; }
         .status-dot.available { background-color: green; }
+
         .visit-btn {
             background-color: #4CAF50;
             color: white;
@@ -81,6 +139,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .back-btn {
             background-color: #4CAF50;
             color: white;
@@ -94,10 +153,17 @@
     </style>
 </head>
 <body>
+    <!-- Sidebar -->
+    <button class="openbtn" onclick="openSidebar()">☰ Menu</button>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+        <a href="#">Profile</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Logout</a>
+    </div>
+
+    <!-- Main Content -->
     <div class="container">
-        <div class="header">
-          <i class="fa-solid fa-person"></i>
-        </div>
         <h1 class="title">Jampel Khangzang</h1>
         <h2 class="title">Select the Room</h2>
         <div class="room-card">
@@ -111,85 +177,22 @@
             </div>
             <button class="visit-btn">Visit Room</button>
         </div>
-        <div class="room-card">
-            <div class="room-info">
-                <div class="room-name">JB</div>
-                <div class="room-status">
-                    <span><span class="status-dot total"></span>32 Total</span><br>
-                    <span><span class="status-dot booked"></span>32 Booked</span><br>
-                    <span><span class="status-dot available"></span>0 Available</span>
-                </div>
-            </div>
-            <button class="visit-btn">Visit Room</button>
-        </div>
-        <div class="room-card">
-            <div class="room-info">
-                <div class="room-name">JC</div>
-                <div class="room-status">
-                    <span><span class="status-dot total"></span>32 Total</span><br>
-                    <span><span class="status-dot booked"></span>24 Booked</span><br>
-                    <span><span class="status-dot available"></span>8 Available</span>
-                </div>
-            </div>
-            <button class="visit-btn">Visit Room</button>
-        </div>
-        <div class="room-card">
-            <div class="room-info">
-                <div class="room-name">JD</div>
-                <div class="room-status">
-                    <span><span class="status-dot total"></span>32 Total</span><br>
-                    <span><span class="status-dot booked"></span>32 Booked</span><br>
-                    <span><span class="status-dot available"></span>0 Available</span>
-                </div>
-            </div>
-            <button class="visit-btn">Visit Room</button>
-        </div>
-        <div class="room-card">
-            <div class="room-info">
-                <div class="room-name">JE</div>
-                <div class="room-status">
-                    <span><span class="status-dot total"></span>32 Total</span><br>
-                    <span><span class="status-dot booked"></span>32 Booked</span><br>
-                    <span><span class="status-dot available"></span>0 Available</span>
-                </div>
-            </div>
-            <button class="visit-btn">Visit Room</button>
-        </div>
-        <div class="room-card">
-            <div class="room-info">
-                <div class="room-name">JF</div>
-                <div class="room-status">
-                    <span><span class="status-dot total"></span>32 Total</span><br>
-                    <span><span class="status-dot booked"></span>32 Booked</span><br>
-                    <span><span class="status-dot available"></span>0 Available</span>
-                </div>
-            </div>
-            <button class="visit-btn">Visit Room</button>
-        </div>
-        <div class="room-card">
-            <div class="room-info">
-                <div class="room-name">JG</div>
-                <div class="room-status">
-                    <span><span class="status-dot total"></span>32 Total</span><br>
-                    <span><span class="status-dot booked"></span>32 Booked</span><br>
-                    <span><span class="status-dot available"></span>0 Available</span>
-                </div>
-            </div>
-            <button class="visit-btn">Visit Room</button>
-        </div>
-        <div class="room-card">
-            <div class="room-info">
-                <div class="room-name">JH</div>
-                <div class="room-status">
-                    <span><span class="status-dot total"></span>32 Total</span><br>
-                    <span><span class="status-dot booked"></span>32 Booked</span><br>
-                    <span><span class="status-dot available"></span>0 Available</span>
-                </div>
-            </div>
-            <button class="visit-btn">Visit Room</button>
-        </div>
+        <!-- Add more room cards as needed -->
         <button class="back-btn">BACK</button>
     </div>
+
+    <!-- Scripts -->
+    <script>
+        function openSidebar() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.querySelector('.container').style.marginLeft = "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.querySelector('.container').style.marginLeft = "0";
+        }
+    </script>
     <script src="/js/bootstrap.bundle.js"></script>
     <script src="/font awesome/all.js"></script>
 </body>

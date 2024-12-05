@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/desktop/css/login.css">
+</head>
+<body>
+    <button class="openbtn" onclick="openSidebar()">☰ Menu</button>
+    
+
+    <div>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+            <a href="#">Profile</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Log Out</a>
+            <a href="#">Notification</a>
+        </div>
+        <div class="login-container">
+            <h1>Log in to Hostel Room Booking</h1>
+            <form>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required><br><br>
+                <a href="/desktop/New html/select.html" class="login">Login</a>
+                <a href="/desktop/New html/registration.html" class="sign">Sign Up</a><br><br>
+                
+            </form>
+            <div class="lost-password">
+                <a href="#">Lost password?</a>
+            </div>
+            <div class="google-login">
+                <p>Log in using your account on:</p>
+                <button class="google-btn">
+                    <img src="https://www.google.com/favicon.ico" alt="Google" class="google-icon">
+                    <span>Login with Official Gmail Account</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="/desktop/js/login.js"></script>
+</body>
+</html>

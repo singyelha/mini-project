@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/desktop/css/registration.css">
+</head>
+<body>
+    <button class="openbtn" onclick="openSidebar()">☰ Menu</button>
+
+    <button class="openbtn" onclick="openSidebar()">☰ Menu</button>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+        <a href="#">Profile</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Log Out</a>
+        <a href="#">Notification</a>
+    </div>
+    <div class="container">
+        <h1 class="header">Register Form</h1>
+        <form id="register-form" action="/submit_registration" method="POST" onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required autocomplete="off">
+
+            <label for="index-number">Index Number:</label>
+            <input type="text" id="index-number" name="index-number" required autocomplete="off" oninput="validateIndexNumber()">
+            <div id="index-error" class="error-message"></div>
+
+            <label for="citizenship-number">Citizenship Number:</label>
+            <input type="text" id="citizenship-number" name="citizenship-number" required autocomplete="off" oninput="validateCitizenshipNumber()" disabled>
+            <div id="citizenship-error" class="error-message"></div>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required disabled>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            
+        </form>
+        <div class="button-container">
+            <button type="button" class="back-button" onclick="window.location='login.html'">Back</button>
+            <button type="button" class="Sign-button" onclick="window.location='select.html'">Sign In</button>
+        </div>
+        
+        
+    </div>
+    <script src="/desktop/js/registration.js"></script>
+</body>
+</html>

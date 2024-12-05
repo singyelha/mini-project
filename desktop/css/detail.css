@@ -1,0 +1,137 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f8f8f8; /* Light background */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.21_8036add8.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center;
+}
+
+
+/* Sidebar Styles */
+.openbtn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    z-index: 1000; /* Ensure button is above everything */
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+.sidebar {
+    height: 100%; /* Full-height */
+    width: 0; /* Initially hidden */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #333; /* Sidebar background */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* Smooth transition */
+    padding-top: 60px; /* Spacing at the top */
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    margin-left: 50px;
+}
+
+/* Form Container Styles */
+.form-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 40px;
+    width: 450px;
+    text-align: left;
+    margin: auto; /* Center the form */
+    position: relative; /* Ensure it remains centered */
+    top: 20px; /* Adjust alignment */
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-button, .next-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button {
+    background-color: #f44336; /* Red color */
+    color: white;
+}
+
+.next-button {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+}
+
+.back-button:hover {
+    background-color: #d32f2f;
+}
+
+.next-button:hover {
+    background-color: #388e3c;
+}

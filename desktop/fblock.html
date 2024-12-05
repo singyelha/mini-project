@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select the Block</title>
     <style>
+        /* General Styles */
         body {
-            font-family:'Times New Roman', Times, serif;
+            font-family: 'Times New Roman', Times, serif;
             background-image: url('/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.21_8036add8.jpg'); /* Add your image URL here */
             background-size: cover; /* Ensures the image covers the entire background */
             background-position: center; /* Centers the background image */
@@ -14,51 +15,142 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* Ensures the height is at least the viewport height */
             margin: 0;
         }
+
         .container {
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background for better visibility */
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
             border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            width: 500px;
-            padding: 40px;    
+            width: 100%; /* Make it responsive on smaller screens */
+            max-width: 700px; /* Set a max width to prevent it from growing too large */
+            padding: 70px;
+            margin: auto; /* Center the box in smaller viewports */
         }
+
         .header {
             background-color: #4a90e2;
             color: white;
             padding: 20px;
             text-align: center;
-            font-size: 28px;
+            font-size: 40px;
         }
+
         .content {
-            padding: 50px;
+            padding: 20px;
         }
+
         .block-option {
             background-color: #e9f0f8;
             border: 2px solid #b8d4f5;
             border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
+            padding: 20px;
+            margin-bottom: 20px;
             cursor: pointer;
             transition: background-color 0.3s;
             text-align: center;
             font-size: 24px;
         }
+
         .block-option:hover {
             background-color: #d0e3f7;
+        }
+
+        /* Sidebar Styles */
+        .openbtn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            z-index: 1000; /* Ensure button is above everything */
+        }
+
+        .openbtn:hover {
+            background-color: #444;
+        }
+
+        .sidebar {
+            height: 100%; /* Full-height */
+            width: 0; /* Initially hidden */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Stay on top */
+            top: 0;
+            left: 0;
+            background-color: #333; /* Sidebar background */
+            overflow-x: hidden; /* Disable horizontal scroll */
+            transition: 0.5s; /* Smooth transition */
+            padding-top: 60px; /* Spacing at the top */
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            margin-left: 50px;
+        }
+
+        /* Media Query for Smaller Screens */
+        @media (max-width: 600px) {
+            .block-option {
+                font-size: 16px;
+                padding: 15px;
+            }
+            .header {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Sidebar -->
+    <button class="openbtn" onclick="openSidebar()">☰ Menu</button>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+        <a href="#">Profile</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Log Out</a>
+    </div>
+
+    <!-- Main Content -->
     <div class="container">
         <div class="header">Select the Block</div>
         <div class="content">
             <div class="block-option">Namgay Khangzang</div>
             <div class="block-option">Deoukhur Khangzang</div>
-
         </div>
     </div>
+
+    <!-- Sidebar Scripts -->
+    <script>
+        /* Sidebar toggle functions */
+        function openSidebar() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
 </body>
 </html>
