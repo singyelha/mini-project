@@ -1,0 +1,25 @@
+body {
+    background-image: url('/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.21_8036add8.jpg'); /* Update this path with your outer background image */
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/picture/WhatsApp\ Image\ 2024-09-01\ at\ 15.28.20_796a3f2e.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+
+
+}
+
+body, html {
+    height: 150%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
